@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonebook</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Phonebook</h1>
+
+        <!-- Add Contact Form -->
+        <form action="/add" method="post">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <button type="submit">Add Contact</button>
+        </form>
+
+        <!-- Contact List -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .}}
+                <tr>
+                    <td>{{.Name}}</td>
+                    <td>{{.Phone}}</td>
+                    <td>
+                        <div class="edit-section">
+                            <form action="/delete" method="POST">
+                                <input type="hidden" name="id" value="{{.ID.Hex}}">
+                                <button class="btn" type="submit">Delete</button>
+                            </form>
+                            <a class="btn-link" href="/update?id={{.ID.Hex}}">Edit</a>
+                        </div>
+                    </td> 
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
