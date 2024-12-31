@@ -14,7 +14,7 @@ import (
 )
 
 
-const connectionString  = "mongodb+srv://ravi:ravi@cluster0.ahx9n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const connectionString  = "mongodb+srv://<your_DB_username>:<your_DB_password>@cluster0.ahx9n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 const dbName = "phoneBook"
 const colName = "contacts"
